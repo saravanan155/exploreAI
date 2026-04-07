@@ -93,4 +93,4 @@ python3 llm_basic.py
 
 **Last Updated:** March 31, 2026
 **Status:** ✅ Production-ready for LLM exploration</content>
-<parameter name="filePath">/Users/sivag/IdeaProjects/exploreAI/PROJECT_HISTORY.md
+<parameter name="filePath">/Users/sivag/IdeaProjects/exploreAI/basicllm/learnings.md
