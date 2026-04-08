@@ -7,8 +7,8 @@ A 24-day structured learning journey exploring LLM capabilities, organized in se
 | Day | Stage | Folder | Description | Status |
 |-----|-------|--------|-------------|--------|
 | 1 | [`basicllm/`](basicllm/README.md) | Basic Claude LLM connection and question-answer | ✅ Complete |
-| 2 | [`llm_intuition/`](llm_intuition/README.md) | Temperature testing, context limits, failure modes | ✅ Ready |
-| 3 | `tokens_and_models/` | Token counting, model comparison, parameters | 📋 Planned |
+| 2 | [`llm_intuition/`](llm_intuition/README.md) | Temperature testing, context limits, failure modes | ✅ Complete |
+| 3 | [`tokens_and_models/`](tokens_and_models/README.md) | Token counting, model comparison, cost estimation | ✅ Complete |
 | 4 | `reliable_api_calls/` | Retry logic, timeouts, structured logging | 📋 Planned |
 | 5-6 | `prompt_engineering/` | JSON outputs, input validation, versioned prompts | 📋 Planned |
 | 7-8 | `chatbot_backend/` | FastAPI endpoint, multi-turn conversations | 📋 Planned |
@@ -21,14 +21,14 @@ A 24-day structured learning journey exploring LLM capabilities, organized in se
 | 21-23 | `fullstack_app/` | Complete application with all features | 📋 Planned |
 | 24+ | `fine_tuning/` | Custom model training and evaluation | 📋 Planned |
 
-## 🚀 Current Stage: LLM Intuition (Day 2)
+## 🚀 Next Stage: Reliable API Calls (Day 4)
 
 ```bash
-cd llm_intuition
+cd reliable_api_calls
 pip3 install -r requirements.txt
 cp .env.example .env
 # Add your Claude API key to .env (get from https://console.anthropic.com/)
-python3 llm_intuition.py
+python3 reliable_api_calls.py
 ```
 
 ## 🔧 Setup Details
@@ -39,6 +39,15 @@ python3 llm_intuition.py
 - **Input**: Interactive - user enters their own questions
 
 ## 🧠 Key Learnings from Development
+
+### Tokens Are Not Characters (Day 3)
+~4 English characters ≈ 1 token for content, but every API call adds ~5–7 structural tokens (role headers, turn delimiters) as fixed overhead. Use `count_tokens()` before sending long prompts to budget cost upfront.
+
+### Model Routing Matters (Day 3)
+Haiku is consistently the fastest and cheapest. Sonnet is most token-efficient for factual tasks. Opus over-delivers even on simple tasks (adds formatting unprompted) and costs ~18× more than Haiku. Route tasks to the cheapest model that meets quality requirements.
+
+### Output Tokens Drive Cost (Day 3)
+Output tokens are 5× more expensive than input tokens across all model tiers. `max_tokens` is a hard ceiling — responses cut off mid-sentence when hit. Set it generously and let the model choose its natural stopping point.
 
 ### API Evolution & Model Names
 LLM APIs evolve rapidly - model names change frequently. Always verify available models via API calls using `client.models.list()`.
@@ -70,11 +79,19 @@ basicllm/                 # Day 1: Basic LLM connection
 ├── requirements.txt     # Python dependencies
 ├── .env.example         # Environment variable template
 ├── README.md            # Folder-specific documentation
-└── learnings            # Development notes and learnings
+└── LEARNINGS.md         # Development notes and learnings
 
 llm_intuition/           # Day 2: LLM intuition exploration
 ├── __init__.py          # Package initialization (exports intuition functions)
 ├── llm_intuition.py     # Main script with temperature/context/failure testing
+├── requirements.txt     # Python dependencies
+├── .env.example         # Environment variable template
+├── README.md            # Folder-specific documentation
+└── LEARNINGS.md         # Development notes and learnings
+
+tokens_and_models/       # Day 3: Token counting, model comparison, cost estimation
+├── __init__.py          # Package initialization (exports call_llm, count_tokens, compare_models)
+├── tokens_and_models.py # Main script with 6-option interactive explorer
 ├── requirements.txt     # Python dependencies
 ├── .env.example         # Environment variable template
 ├── README.md            # Folder-specific documentation
