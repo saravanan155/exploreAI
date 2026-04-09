@@ -9,7 +9,7 @@ A structured learning journey exploring LLM capabilities end-to-end, organised i
 | 1 | [`basicllm/`](basicllm/README.md) | Basic Claude API connection, question-answer loop | ✅ Complete |
 | 2 | [`llm_intuition/`](llm_intuition/README.md) | Temperature, context limits, failure modes | ✅ Complete |
 | 3 | [`tokens_and_models/`](tokens_and_models/README.md) | Token counting, model tiers (Haiku/Sonnet/Opus), cost estimation | ✅ Complete |
-| 4 | [`reliable_api_calls/`](reliable_api_calls/README.md) | Retry logic, timeouts, structured logging, jitter, request IDs, log rotation | 🚧 In Progress |
+| 4 | [`reliable_api_calls/`](reliable_api_calls/README.md) | Retry logic, timeouts, structured logging, jitter, request IDs, log rotation | ✅ Complete |
 | 5–6 | `prompt_engineering/` | System prompts, few-shot prompting, chain-of-thought, **extended thinking API**, structured outputs with Pydantic, prompt versioning | 📋 Planned |
 | 7 | `multi_modal/` | Claude vision API — sending images, PDFs, and screenshots in prompts | 📋 Planned |
 | 8–10 | `chatbot_backend/` | FastAPI endpoint, streaming responses, multi-turn memory management, async retries (`asyncio.sleep`), connect vs read timeout, **JWT/OAuth authentication, user-level rate limiting** | 📋 Planned |
@@ -55,14 +55,14 @@ Day 3 Tokens                        Day 7 Multi-modal
                                                         Day 30+ Fine-tune
 ```
 
-## 🚀 Current Stage: Reliable API Calls (Day 4)
+## 🚀 Next Stage: Prompt Engineering (Day 5–6)
 
 ```bash
-cd reliable_api_calls
+cd prompt_engineering
 pip3 install -r requirements.txt
 cp .env.example .env
 # Add your Claude API key to .env (get from https://console.anthropic.com/)
-python3 reliable_api_calls.py
+python3 prompt_engineering.py
 ```
 
 ## 🔧 Setup Details
