@@ -10,7 +10,7 @@ A structured learning journey exploring LLM capabilities end-to-end, organised i
 | 2 | [`llm_intuition/`](llm_intuition/README.md) | Temperature, context limits, failure modes | ✅ Complete |
 | 3 | [`tokens_and_models/`](tokens_and_models/README.md) | Token counting, model tiers (Haiku/Sonnet/Opus), cost estimation | ✅ Complete |
 | 4 | [`reliable_api_calls/`](reliable_api_calls/README.md) | Retry logic, timeouts, structured logging, jitter, request IDs, log rotation | ✅ Complete |
-| 5–6 | `prompt_engineering/` | System prompts, few-shot prompting, chain-of-thought, **extended thinking API**, structured outputs with Pydantic, prompt versioning | 📋 Planned |
+| 5–6 | [`prompt_engineering/`](prompt_engineering/README.md) | System prompts, few-shot prompting, chain-of-thought, **extended thinking API**, structured outputs with Pydantic, prompt versioning | 🚧 In Progress |
 | 7 | `multi_modal/` | Claude vision API — sending images, PDFs, and screenshots in prompts | 📋 Planned |
 | 8–10 | `chatbot_backend/` | FastAPI endpoint, streaming responses, multi-turn memory management, async retries (`asyncio.sleep`), connect vs read timeout, **JWT/OAuth authentication, user-level rate limiting** | 📋 Planned |
 | 11–12 | `chatbot_frontend/` | React UI, real-time streaming display, conversation history | 📋 Planned |
@@ -134,6 +134,14 @@ tokens_and_models/          # Day 3: Token counting, model comparison, cost esti
 reliable_api_calls/         # Day 4: Retry, timeout, logging, jitter, request IDs, rotation
 ├── __init__.py
 ├── reliable_api_calls.py
+├── requirements.txt
+├── .env.example
+├── README.md
+└── LEARNINGS.md
+
+prompt_engineering/         # Day 5–6: Zero-shot, few-shot, CoT, structured outputs
+├── __init__.py
+├── prompt_engineering.py
 ├── requirements.txt
 ├── .env.example
 ├── README.md

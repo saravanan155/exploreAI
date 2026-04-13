@@ -19,6 +19,16 @@ def call_llm(question: str) -> str:
 
     Returns:
         The LLM's response as a string
+
+    About the Response Object:
+        The API returns a Message object with:
+        - id:          Unique message identifier
+        - content:     List of content blocks (usually text)
+        - model:       The exact model version used (e.g. claude-sonnet-4-6-20250514)
+        - role:        Always 'assistant' for Claude responses
+        - stop_reason: Why it stopped ('end_turn', 'max_tokens', etc.)
+        - usage:       Token counts (input_tokens, output_tokens)
+                       Used for cost calculation: output_tokens cost 5× more
     """
     # Initialize the Anthropic client with API key from environment
     api_key = os.getenv("ANTHROPIC_API_KEY")
@@ -29,15 +39,33 @@ def call_llm(question: str) -> str:
     client = Anthropic(api_key=api_key)
 
     # Call the Claude LLM model
+    # This returns a Message object with all response metadata
     response = client.messages.create(
         model="claude-sonnet-4-6",  # Latest Claude Sonnet 4.6 model
-        max_tokens=500,
+        max_tokens=500,             # Hard ceiling — response cuts off if it exceeds this
         messages=[
             {"role": "user", "content": question}
         ]
     )
 
-    # Extract and return the response text
+    # response structure:
+    # {
+    #   'id': 'msg_01P2Dwnjd3t2sGvk9fJGBssy',
+    #   'content': [TextBlock(text='...', type='text')],
+    #   'model': 'claude-sonnet-4-6-20250514',
+    #   'role': 'assistant',
+    #   'stop_reason': 'end_turn',
+    #   'usage': Usage(
+    #       input_tokens=45,
+    #       output_tokens=128,
+    #       cache_creation_input_tokens=0,
+    #       cache_read_input_tokens=0
+    #   )
+    # }
+
+    # Extract and return just the text response
+    # response.content[0] is a TextBlock object
+    # .text is the actual string response from Claude
     return response.content[0].text
 
 
