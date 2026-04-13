@@ -6,11 +6,11 @@ A structured learning journey exploring LLM capabilities end-to-end, organised i
 
 | Day | Folder | Description | Status |
 |-----|--------|-------------|--------|
-| 1 | [`basicllm/`](basicllm/README.md) | Basic Claude API connection, question-answer loop | ✅ Complete |
-| 2 | [`llm_intuition/`](llm_intuition/README.md) | Temperature, context limits, failure modes | ✅ Complete |
-| 3 | [`tokens_and_models/`](tokens_and_models/README.md) | Token counting, model tiers (Haiku/Sonnet/Opus), cost estimation | ✅ Complete |
-| 4 | [`reliable_api_calls/`](reliable_api_calls/README.md) | Retry logic, timeouts, structured logging, jitter, request IDs, log rotation | ✅ Complete |
-| 5–6 | [`prompt_engineering/`](prompt_engineering/README.md) | System prompts, few-shot prompting, chain-of-thought, **extended thinking API**, structured outputs with Pydantic, prompt versioning | 🚧 In Progress |
+| 1 | [`01_basicllm/`](01_basicllm/README.md) | Basic Claude API connection, question-answer loop | ✅ Complete |
+| 2 | [`02_llm_intuition/`](02_llm_intuition/README.md) | Temperature, context limits, failure modes | ✅ Complete |
+| 3 | [`03_tokens_and_models/`](03_tokens_and_models/README.md) | Token counting, model tiers (Haiku/Sonnet/Opus), cost estimation | ✅ Complete |
+| 4 | [`04_reliable_api_calls/`](04_reliable_api_calls/README.md) | Retry logic, timeouts, structured logging, jitter, request IDs, log rotation | ✅ Complete |
+| 5–6 | [`05_prompt_engineering/`](05_prompt_engineering/README.md) | System prompts, few-shot prompting, chain-of-thought, **extended thinking API**, structured outputs with Pydantic, prompt versioning | 🚧 In Progress |
 | 7 | `multi_modal/` | Claude vision API — sending images, PDFs, and screenshots in prompts | 📋 Planned |
 | 8–10 | `chatbot_backend/` | FastAPI endpoint, streaming responses, multi-turn memory management, async retries (`asyncio.sleep`), connect vs read timeout, **JWT/OAuth authentication, user-level rate limiting** | 📋 Planned |
 | 11–12 | `chatbot_frontend/` | React UI, real-time streaming display, conversation history | 📋 Planned |
@@ -58,7 +58,7 @@ Day 3 Tokens                        Day 7 Multi-modal
 ## 🚀 Next Stage: Prompt Engineering (Day 5–6)
 
 ```bash
-cd prompt_engineering
+cd 05_prompt_engineering
 pip3 install -r requirements.txt
 cp .env.example .env
 # Add your Claude API key to .env (get from https://console.anthropic.com/)
@@ -107,7 +107,7 @@ Use `requirements.txt` for reproducible environments. Specify minimum versions a
 ## 📦 Package Structure
 
 ```
-basicllm/                   # Day 1: Basic LLM connection
+01_basicllm/                # Day 1: Basic LLM connection
 ├── __init__.py
 ├── llm_basic.py
 ├── requirements.txt
@@ -115,7 +115,7 @@ basicllm/                   # Day 1: Basic LLM connection
 ├── README.md
 └── LEARNINGS.md
 
-llm_intuition/              # Day 2: LLM intuition exploration
+02_llm_intuition/           # Day 2: LLM intuition exploration
 ├── __init__.py
 ├── llm_intuition.py
 ├── requirements.txt
@@ -123,7 +123,7 @@ llm_intuition/              # Day 2: LLM intuition exploration
 ├── README.md
 └── LEARNINGS.md
 
-tokens_and_models/          # Day 3: Token counting, model comparison, cost estimation
+03_tokens_and_models/       # Day 3: Token counting, model comparison, cost estimation
 ├── __init__.py
 ├── tokens_and_models.py
 ├── requirements.txt
@@ -131,7 +131,7 @@ tokens_and_models/          # Day 3: Token counting, model comparison, cost esti
 ├── README.md
 └── LEARNINGS.md
 
-reliable_api_calls/         # Day 4: Retry, timeout, logging, jitter, request IDs, rotation
+04_reliable_api_calls/      # Day 4: Retry, timeout, logging, jitter, request IDs, rotation
 ├── __init__.py
 ├── reliable_api_calls.py
 ├── requirements.txt
@@ -139,7 +139,7 @@ reliable_api_calls/         # Day 4: Retry, timeout, logging, jitter, request ID
 ├── README.md
 └── LEARNINGS.md
 
-prompt_engineering/         # Day 5–6: Zero-shot, few-shot, CoT, structured outputs
+05_prompt_engineering/      # Day 5–6: Zero-shot, few-shot, CoT, structured outputs
 ├── __init__.py
 ├── prompt_engineering.py
 ├── requirements.txt
